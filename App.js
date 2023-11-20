@@ -1,6 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View,FlatList } from 'react-native';
 import { useState } from 'react';
+import Header from './component/Header';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function App() {
 
@@ -11,9 +13,10 @@ const [doList , setDoList] = useState([
 
 ])
   return (
-    <View style={styles.container}>
+    <SafeAreaView>
+    <View >
 
-
+      <Header />
       <View style={styles.content}>
 
 
@@ -30,6 +33,7 @@ const [doList , setDoList] = useState([
       
       </View>
     </View>
+    </SafeAreaView>
   );
 }
 
