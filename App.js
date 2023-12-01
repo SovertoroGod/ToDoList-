@@ -6,6 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import ListTodo from './component/ListTodo';
 import Header from './component/Header';
 
+
 export default function App() {
 
 
@@ -14,11 +15,12 @@ export default function App() {
     <View >
 
       <Header />
+      
       <View style={styles.content}>
 
 
         <View style={styles.list}>
-          <ListTodo/>
+          <ListTodo />
         </View>
       
       </View>

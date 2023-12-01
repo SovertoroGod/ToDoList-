@@ -1,6 +1,7 @@
-import { TouchableOpacity, Text, StyleSheet,FlatList } from 'react-native'
+import { TouchableOpacity, Text, StyleSheet,FlatList, View } from 'react-native'
 import React from 'react'
 import { useState } from 'react';
+import AddList from './AddList';
 
 export default function ListTodo() {
   const [doList , setDoList] = useState([
@@ -16,17 +17,34 @@ export default function ListTodo() {
       return list.filter(todo => todo.key != key);
     });
   }
+
+  const submitHandler = (text) => {
+    setDoList((prevtodo) => {
+      return [
+        {listName: text, key : Math.random().toString()},
+        ...prevtodo
+      ]
+    })
+  }
+
+
+
   return (
+    <View >
+    <AddList submitHandler={submitHandler}/>
+    <View>
     <FlatList 
             data={doList}
             renderItem={({item})=>
             (
-              <TouchableOpacity onPress={()=> pressHandler(item.key)}>
+            <TouchableOpacity onPress={()=> pressHandler(item.key)}>
               <Text style={styles.list}>{item.listName}</Text>
             </TouchableOpacity>
             )
           }
           />
+        </View>
+   </View>
     
   )
 }
